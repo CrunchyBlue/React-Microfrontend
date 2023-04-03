@@ -1,33 +1,11 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = "4.61.0"
-    }
-  }
-  backend "s3" {
-    bucket = "tf-crunchyblue-s3"
-    key    = "terraform/react-microfrontend"
-    region = "us-east-2"
-  }
-}
-
-provider "aws" {
-  profile = "david"
-  region = "us-east-2"
-}
-
 locals {
-  origin_id = "s3-microfrontend"
+  origin_id = "s3-${var.app}"
 }
 
 resource "aws_s3_bucket" "bucket" {
-  bucket = "s3-ue2-p-react-microfrontend"
+  bucket = "s3-${var.region}-${var.environment}-${var.app}"
   force_destroy = true
-  tags = {
-    Name        = "React Microfrontend"
-    Environment = "Production"
-  }
+  tags = var.tags
 }
 
 resource "aws_s3_bucket_public_access_block" "bucket_public_access" {
@@ -74,7 +52,7 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
 }
 
 resource "aws_cloudfront_cache_policy" "cloudfront_cache_policy" {
-  name        = "cfcp-ue2-p-react-microfrontend"
+  name        = "cfcp-${var.region}-${var.environment}-${var.app}"
   min_ttl                = 0
   default_ttl            = 3600
   max_ttl                = 86400
@@ -132,8 +110,5 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
-  tags = {
-    Name        = "React Microfrontend"
-    Environment = "Production"
-  }
+  tags = var.tags
 }
