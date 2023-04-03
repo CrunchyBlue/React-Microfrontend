@@ -23,7 +23,7 @@ locals {
 
 resource "aws_s3_bucket" "bucket" {
   bucket = "s3-ue2-p-react-microfrontend"
-
+  force_destroy = true
   tags = {
     Name        = "React Microfrontend"
     Environment = "Production"
