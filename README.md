@@ -13,7 +13,8 @@ This repository demonstrates a microfrontend architecture utilizing both React a
 
 ## Build
 
-1. Run `make build -j` to run all projects locally in both isolation and integrated modes.
+1. Install npm packages on all 4 projects (e.g., run `npm install` from within the `container`, `marketing`, `auth`, and `dashboard` apps).
+2. Run `make build -j` to run all projects locally in both isolation and integrated modes.
    1. `Container` can be accessed at `localhost:8080` and is the fully integrated microfrontend app.
    2. `Marketing` can be accessed at `localhost:8081` and is the isolated marketing app.
    3. `Auth` can be accessed at `localhost:8082` and is the isolated auth app.
