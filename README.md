@@ -32,5 +32,5 @@ All GitHub workflows are attached to this project and require a few steps to be 
 6. Define the following secrets in your GitHub repository for this project
    1. `AWS_S3_BUCKET_NAME` The name of the S3 bucket created in the previous step.
    2. `CLOUDFRONT_DISTRIBUTION_ID` The CloudFront distribution ID returned by Terraform outputs in the previous step.
-   3. `PRODUCTION_DOMAIN` The CloudFront domain name returned by Terraform outputs in the previous step (be sure to remove the trailing forward slash when adding to GitHub).
+   3. `PRODUCTION_DOMAIN` The CloudFront domain name returned by Terraform outputs (or your personal domain) in the previous step (be sure to remove the trailing forward slash when adding to GitHub).
 7. Run all four pipelines either manually or by making some small alteration to files in all four project directories which will trigger the CI/CD process (`container`, `marketing`, `auth`, `dashboard`).
