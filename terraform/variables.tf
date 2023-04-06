@@ -1,6 +1,6 @@
 variable "region" {
   type = string
-  default = "ue2"
+  default = "ue1"
 }
 
 variable "environment" {
@@ -13,10 +13,15 @@ variable "app" {
   default = "react-microfrontend"
 }
 
+variable "domain" {
+  type = string
+  default = "example.com"
+}
+
 variable "tags" {
   type = map(string)
   default = {
-    Name        = "React Microfrontend"
+    Application        = "React Microfrontend"
     Environment = "Production"
   }
 }
