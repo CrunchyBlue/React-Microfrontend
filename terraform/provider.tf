@@ -6,7 +6,7 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "s3-crunchyblue-tf"
+    bucket = "YOUR_TERRAFORM_BUCKET"
     key    = "terraform/react-microfrontend"
     region = "us-east-1"
   }
